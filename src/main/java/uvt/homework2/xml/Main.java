@@ -22,4 +22,6 @@ public class Main {
             validator.listParsingExceptions();
         }
     }
+
+    // https://docs.oracle.com/cd/E17802_01/webservices/webservices/docs/1.6/tutorial/doc/JAXBUsing3.html
 }
