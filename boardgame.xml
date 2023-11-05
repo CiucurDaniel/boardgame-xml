@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BoardgameRoot>
+    <manufacturers>
+        <manufacturer manufacturerID="m1">
+            <name>Hasbro</name>
+            <country>United States</country>
+        </manufacturer>
+        <manufacturer manufacturerID="m2">
+            <name>Kosmos</name>
+            <country>Germany</country>
+        </manufacturer>
+        <manufacturer manufacturerID="m3">
+            <name>Hasbro</name>
+            <country>United States</country>
+        </manufacturer>
+    </manufacturers>
+    <categories>
+        <category categoryID="c1">
+            <name>Strategy</name>
+        </category>
+        <category categoryID="c2">
+            <name>Party</name>
+        </category>
+        <category categoryID="c3">
+            <name>Coop</name>
+        </category>
+        <category categoryID="c4">
+            <name>City-building</name>
+        </category>
+    </categories>
+    <boardgames>
+        <boardgame ID="b1" manufacturerID="m1" categoriesIDs="c2">
+            <releaseDate>29.01.2001</releaseDate>
+            <name>Catan</name>
+            <price>255</price>
+        </boardgame>
+        <boardgame ID="b2" manufacturerID="m2" categoriesIDs="c1 c3 c4">
+            <releaseDate>29.01.2004</releaseDate>
+            <name>Monopoly</name>
+            <price>150</price>
+        </boardgame>
+        <boardgame ID="b3" manufacturerID="m3" categoriesIDs="c2 c3">
+            <releaseDate>14.10.2015</releaseDate>
+            <name>Exploding Kittens</name>
+            <price>50</price>
+        </boardgame>
+        <boardgame ID="b4" manufacturerID="m1" categoriesIDs="c4">
+            <releaseDate>02.07.2010</releaseDate>
+            <name>Backgammon</name>
+            <price>100</price>
+        </boardgame>
+        <boardgame ID="b5" manufacturerID="m2" categoriesIDs="c1 c3">
+            <releaseDate>02.07.2010</releaseDate>
+            <name>Pandemic</name>
+            <price>100</price>
+        </boardgame>
+    </boardgames>
+</BoardgameRoot>
+
+
+
+<!--<reviews>-->
+<!--<review reviewID="r1" boardgameID="b1">-->
+<!--    <stars>4</stars>-->
+<!--    <reviewText>Amazing game! But a bit expensive.</reviewText>-->
+<!--</review>-->
+<!--<review reviewID="r2" boardgameID="b3">-->
+<!--    <stars>2</stars>-->
+<!--    <reviewText>It gets boring really fast.</reviewText>-->
+<!--</review>-->
+<!--<review reviewID="r3" boardgameID="b2">-->
+<!--    <stars>5</stars>-->
+<!--    <reviewText>Endless fun, and comes with a small price.</reviewText>-->
+<!--</review>-->
+<!--</reviews>-->

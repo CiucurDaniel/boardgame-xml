@@ -1,0 +1,61 @@
+<xs:schema
+        attributeFormDefault="unqualified"
+        elementFormDefault="qualified"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="BoardgameRoot">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="manufacturers" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="manufacturer" maxOccurs="unbounded" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="name"/>
+                                        <xs:element type="xs:string" name="country"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="manufacturerID" type="xs:ID" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="categories" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="category" maxOccurs="unbounded" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="name"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="categoryID" type="xs:ID" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="boardgames" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="boardgame" maxOccurs="unbounded" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="releaseDate"/>
+                                        <xs:element type="xs:string" name="name"/>
+                                        <xs:element type="xs:short" name="price"/>
+                                    </xs:sequence>
+                                    <!--                  <xs:attribute type="xs:string" name="ID" use="optional"/>-->
+                                    <xs:attribute name="ID" type="xs:ID" use="required"/>
+                                    <!--                  <xs:attribute type="xs:string" name="manufacturerID" use="optional"/>-->
+                                    <xs:attribute name="manufacturerID" type="xs:IDREF" use="required"/>
+                                    <!--                  <xs:attribute type="xs:string" name="categoriesIDs" use="optional"/>-->
+                                    <xs:attribute name="categoriesIDs" type="xs:IDREFS" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
