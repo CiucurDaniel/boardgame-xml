@@ -41,7 +41,7 @@ public class XMLValidator {
     public List<SAXParseException> listParsingExceptions() throws IOException, SAXException {
         XmlErrorHandler xsdErrorHandler = new XmlErrorHandler();
         Validator validator = initValidator(xsdPath);
-        validator.setErrorHandler(xsdErrorHandler);
+        validator.setErrorHandler(xsdErrorHandler); // important, set my custom handler
         try {
             validator.validate(new StreamSource(getFile(xmlPath)));
         } catch (SAXParseException e) {}
