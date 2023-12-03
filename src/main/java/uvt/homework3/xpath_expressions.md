@@ -90,7 +90,59 @@ Expresii complexe cand filtrarea bazata pe relatii cu alte parti ale documentelu
 
 // Gasirea ID-ului primului producator si apoi identificarea boardgame-urilor produse de acesta
 ```xpath2
-/TODO
+//manufacturers/manufacturer[position() = 1]/@manufacturerID/ancestor::BoardgameRoot/boardgames/boardgame[@manufacturerID = //manufacturers/manufacturer[position() = 1]/@manufacturerID]/name
+
 ```
 
+* Media de pret a boardgame-urilor (NOTA: consideram price de forma: $100)
+```xpath2
+avg(//boardgame/number(substring-after(price, '$')))
+```
+
+* Media boardgame-urilor de pe primele 3 pozitii
+```xpath2
+avg(//boardgame[position() le 3]/number(price))
+```
+
+* Aplica discount-uri bazat pe pretul boardgame-ului
+```xpath2
+for $boardgame in //boardgame
+return
+    if ($boardgame/price > 120) then
+        <discountedBoardgame>
+            <name>{data($boardgame/name)}</name>
+            <originalPrice>{data($boardgame/price)}</originalPrice>
+            <discountedPrice>{data($boardgame/price * 0.8)}</discountedPrice>
+        </discountedBoardgame>
+    else
+        <discountedBoardgame>
+            <name>{data($boardgame/name)}</name>
+            <originalPrice>{data($boardgame/price)}</originalPrice>
+            <discountedPrice>{data($boardgame/price * 0.7)}</discountedPrice>
+        </discountedBoardgame>
+```
+
+* Gaseste boardgame-urile care sunt facute de "Kosmos" si costa mai mult de 100
+```xpath2
+//manufacturer[name = 'Kosmos']/ancestor::BoardgameRoot/boardgames/boardgame[number(price) > 100]/name
+
+```
+
+* Some | Verificam daca unele boardgames de la Hasbro costa peste 200
+```xpath2
+//manufacturers/manufacturer[name = 'Hasbro'][some $game in //boardgame[@manufacturerID = current-manufacturer/@manufacturerID] satisfies $game/price > 200]
+```
+
+* Every | Verifica daca fiecare boardgame de la Hasbro costa peste 50 
+```xpath2
+//manufacturers/manufacturer[name = 'Hasbro'][every $game in //boardgame[@manufacturerID = current-manufacturer/@manufacturerID] satisfies $game/price > 50]
+```
+
+* FIXME: Manufacturer cu cele mai multe boardgames
+```xpath2
+//manufacturers/manufacturer[
+count(//boardgames[@manufacturerID = current()/@manufacturerID]) =
+max(//manufacturers/manufacturer/count(//boardgames[@manufacturerID = current()/@manufacturerID]))
+]
+```
 //65t67y
