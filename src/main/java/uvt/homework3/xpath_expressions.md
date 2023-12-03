@@ -24,25 +24,48 @@ count(//BoardgameRoot/boardgames/boardgame)
 ```xpath2
 /BoardgameRoot/categories/category[3]
 ```
+* Toate elementele a caror parent tag nu este boardgames
+```xpath2
+//*[name()!='boardgames']/*
+```
+
+* Cate categorii are al-3-lea boardgame
+```xpath2
+/BoardgameRoot/boardgames/boardgame[count(idref('categoriesIDs')) < 2]
+```
 
 # Expresii medii
 ---------------------------------------------------------------
 
-Expresii medii cu filtrare simpla folosind predicate.
+Expresii medii cu filtrare simpla folosind predicate ([condition], and, or, not) .
 
 * Gasire boardgame-uri cuprinse intre un anumit pret
 ```xpath2
 /BoardgameRoot/boardgames/boardgame[price[. >= 20 and . <= 50]]
 ```
-
-* Afisare toate detalii producator nr 2 inline
+* Gasire boardgame cu pret mai mic de 110 lei sau produse de manufacturer-ul m1
 ```xpath2
-/BoardgameRoot/manufacturers/manufacturer[2]/concat()
+/BoardgameRoot/boardgames/boardgame[price<= 110 or @manufacturerID='m1']
+```
+
+* Gasire boardgame care nu sunt produse de manufacturer-ul m2
+```xpath2
+/BoardgameRoot/boardgames/boardgame[not(@manufacturerID='m2')]
+```
+
+* Afisare sub forma "boardgame - price"
+```xpath2
+/BoardgameRoot/boardgames/boardgame/concat(name, ' ', price)
+```
+
+* Afisare sub forma "boardgame - price" intr-o singure linie si valorile separate prin virgula ("Catan 100, Monopoly 250")
+```xpath2
+string-join(/BoardgameRoot/boardgames/boardgame/concat(name, ' ', price), ', ')
 ```
 
 * Boardgame-uri create de producatorul X
 ```xpath2
-/TODO
+/BoardgameRoot/boardgames
 ```
 * Boardgame care are o categorie (numele categoriei este dat)
 ```xpath2
