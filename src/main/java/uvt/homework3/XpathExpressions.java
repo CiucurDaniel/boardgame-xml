@@ -21,16 +21,13 @@ public class XpathExpressions {
         Document doc = null;
         try {
             builder = factory.newDocumentBuilder();
-            doc = builder.parse("D:\\coding\\GitHub\\boardgame-xml\\boardgame.xml");
+            doc = builder.parse("/Users/daniel/Documents/GitHub/boardgame-xml/boardgame.xml");
 
-            // Create XPathFactory object
             XPathFactory xpathFactory = XPathFactory.newInstance();
-
-            // Create XPath object
             XPath xpath = xpathFactory.newXPath();
 
-            String name = getBoardgameNameById(doc, xpath, 4);
-            System.out.println("Boardgame name with ID 4: " + name);
+            String name = getBoardgameNameById(doc, xpath, "b4");
+            System.out.println("Boardgame name with ID b4: " + name);
 
 //            List<String> names = getBoardgameNameWithAge(doc, xpath, 30);
 //            System.out.println("Boardgames with 'age>30' are:" + Arrays.toString(names.toArray()));
@@ -76,11 +73,11 @@ public class XpathExpressions {
     }
 
 
-    private static String getBoardgameNameById(Document doc, XPath xpath, int id) {
+    private static String getBoardgameNameById(Document doc, XPath xpath, String id) {
         String name = null;
         try {
             XPathExpression expr =
-                    xpath.compile("/Boardgames/Boardgame[@id='" + id + "']/name/text()");
+                    xpath.compile("/BoardgameRoot/boardgames/boardgame[@ID='b4']/name/text()");
             name = (String) expr.evaluate(doc, XPathConstants.STRING);
         } catch (XPathExpressionException e) {
             e.printStackTrace();
