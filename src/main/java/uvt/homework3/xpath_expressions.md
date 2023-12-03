@@ -20,7 +20,7 @@ count(//BoardgameRoot/boardgames/boardgame)
 /BoardgameRoot/boardgames/boardgame[price <= 150]
 ```
 
-* A 3-a categorie categorie
+* A 3-a categorie
 ```xpath2
 /BoardgameRoot/categories/category[3]
 ```
@@ -31,7 +31,7 @@ count(//BoardgameRoot/boardgames/boardgame)
 
 * Cate categorii are al-3-lea boardgame
 ```xpath2
-/BoardgameRoot/boardgames/boardgame[count(idref('categoriesIDs')) < 2]
+/BoardgameRoot/boardgames/boardgame[3]/count(tokenize(@categoriesIDs, ' '))
 ```
 
 # Expresii medii
@@ -48,9 +48,9 @@ Expresii medii cu filtrare simpla folosind predicate ([condition], and, or, not)
 /BoardgameRoot/boardgames/boardgame[price<= 110 or @manufacturerID='m1']
 ```
 
-* Gasire boardgame care nu sunt produse de manufacturer-ul m2
+* Gasire nume boardgames care nu sunt produse de manufacturer-ul m2
 ```xpath2
-/BoardgameRoot/boardgames/boardgame[not(@manufacturerID='m2')]
+/BoardgameRoot/boardgames/boardgame[not(@manufacturerID='m2')]/name
 ```
 
 * Afisare sub forma "boardgame - price"
@@ -63,7 +63,7 @@ Expresii medii cu filtrare simpla folosind predicate ([condition], and, or, not)
 string-join(/BoardgameRoot/boardgames/boardgame/concat(name, ' ', price), ', ')
 ```
 
-* Boardgame-uri create de producatorul X
+* Boardgame-uri create de producatorul X (nume)
 ```xpath2
 /BoardgameRoot/boardgames
 ```
