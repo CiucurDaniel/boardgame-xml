@@ -63,18 +63,24 @@ Expresii medii cu filtrare simpla folosind predicate ([condition], and, or, not)
 string-join(/BoardgameRoot/boardgames/boardgame/concat(name, ' ', price), ', ')
 ```
 
-* Boardgame-uri create de producatorul X (nume)
-```xpath2
-/BoardgameRoot/boardgames
-```
-* Boardgame care are o categorie (numele categoriei este dat)
-```xpath2
-/TODO
-```
-
 * Boardgame care are o singura categorie
 ```xpath2
-/TODO
+/BoardgameRoot/boardgames/boardgame/name[count(tokenize(../@categoriesIDs, ' ')) < 2 ]
+```
+
+* Ce boardgame este inaintea boardgame-ului b3
+```xpath2
+/BoardgameRoot/boardgames/boardgame[@ID='b3']/ancestor::boardgame
+```
+
+* Ce boardgames se afla dupa boardgame-ului b3
+```xpath2
+/BoardgameRoot/boardgames/boardgame[@ID='b3']/following-sibling::boardgame
+```
+
+* Selectare boardgame cu pret distinct (un set de elemente boardgame cu pret distinct)
+```xpath2
+/BoardgameRoot/boardgames/boardgame/name[not(price = preceding-sibling::boardgame/price)]
 ```
 
 # Expresii complexe
