@@ -104,24 +104,6 @@ avg(//boardgame/number(substring-after(price, '$')))
 avg(//boardgame[position() le 3]/number(price))
 ```
 
-* Aplica discount-uri bazat pe pretul boardgame-ului
-```xpath2
-for $boardgame in //boardgame
-return
-    if ($boardgame/price > 120) then
-        <discountedBoardgame>
-            <name>{data($boardgame/name)}</name>
-            <originalPrice>{data($boardgame/price)}</originalPrice>
-            <discountedPrice>{data($boardgame/price * 0.8)}</discountedPrice>
-        </discountedBoardgame>
-    else
-        <discountedBoardgame>
-            <name>{data($boardgame/name)}</name>
-            <originalPrice>{data($boardgame/price)}</originalPrice>
-            <discountedPrice>{data($boardgame/price * 0.7)}</discountedPrice>
-        </discountedBoardgame>
-```
-
 * Gaseste boardgame-urile care sunt facute de "Kosmos" si costa mai mult de 100
 ```xpath2
 //manufacturer[name = 'Kosmos']/ancestor::BoardgameRoot/boardgames/boardgame[number(price) > 100]/name
@@ -138,11 +120,10 @@ return
 //manufacturers/manufacturer[name = 'Hasbro'][every $game in //boardgame[@manufacturerID = current-manufacturer/@manufacturerID] satisfies $game/price > 50]
 ```
 
-* FIXME: Manufacturer cu cele mai multe boardgames
+* Manufacturer cu cele mai multe boardgames
 ```xpath2
 //manufacturers/manufacturer[
 count(//boardgames[@manufacturerID = current()/@manufacturerID]) =
 max(//manufacturers/manufacturer/count(//boardgames[@manufacturerID = current()/@manufacturerID]))
 ]
 ```
-//65t67y
