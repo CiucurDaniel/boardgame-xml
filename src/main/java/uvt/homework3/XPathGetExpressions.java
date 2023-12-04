@@ -26,7 +26,7 @@ public class XPathGetExpressions {
             XPath xpath = xPathFactory.newXPath();
 
             // Example 1: Get the name of the boardgame by ID
-            String boardgameId = "b2"; // Replace with the desired boardgame ID
+            String boardgameId = "b2";
             String boardgameName = getBoardgameById(document, xpath, boardgameId);
             System.out.println("Name of the boardgame with ID '" + boardgameId + "': " + boardgameName);
 
