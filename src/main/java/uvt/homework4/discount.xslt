@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:w3="http://www.w3schools.com">
+                xmlns:xs="http://www.w3schools.com">
 
     <xsl:output method="html" encoding="UTF-8"/>
 
@@ -30,20 +30,20 @@
                         <th>Price</th>
                         <th>Discount</th>
                     </tr>
-                    <xsl:apply-templates select="//w3:boardgame"/>
+                    <xsl:apply-templates select="//xs:boardgame"/>
                 </table>
             </body>
         </html>
     </xsl:template>
 
-    <xsl:template match="w3:boardgame">
+    <xsl:template match="xs:boardgame">
         <tr>
             <td><xsl:value-of select="@ID"/></td>
-            <td><xsl:value-of select="w3:name"/></td>
-            <td><xsl:value-of select="w3:releaseDate"/></td>
-            <td><xsl:value-of select="w3:price"/></td>
+            <td><xsl:value-of select="xs:name"/></td>
+            <td><xsl:value-of select="xs:releaseDate"/></td>
+            <td><xsl:value-of select="xs:price"/></td>
             <!-- Calculate and display the discount -->
-            <td><xsl:value-of select="format-number(w3:price * 0.85, '#.##')"/> (15%)</td>
+            <td><xsl:value-of select="format-number(xs:price * 0.85, '#.##')"/> (15%)</td>
         </tr>
     </xsl:template>
 
