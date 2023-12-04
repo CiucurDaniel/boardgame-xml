@@ -150,7 +150,7 @@ public class XSLTApplication {
                 double price = Double.parseDouble(priceStr);
 
                 // Apply the transformation for search_by_category_and_price.xslt
-                Source xmlSource = new StreamSource("boardgames.xml");
+                Source xmlSource = new StreamSource(BOARDGAME_XML_PATH);
 
                 // Pass parameters to the transformer
                 transformer.setParameter("category", category);
