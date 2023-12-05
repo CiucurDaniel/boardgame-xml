@@ -42,7 +42,7 @@ public class XPathGetExpressions {
             // Example 3: Apply a discount to all boardgames and print the updated XML
             double discountPercentage = 10; // You can change this value as needed
             Document discountedDocument = applyDiscountToBoardgames(document, xpath, discountPercentage);
-            //printXml(discountedDocument);
+            printXml(discountedDocument);
 
         } catch (Exception e) {
             e.printStackTrace();
